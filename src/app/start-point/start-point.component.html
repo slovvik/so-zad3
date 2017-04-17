@@ -1,0 +1,14 @@
+<label for="virtualMemory">Podaj ilość stron</label>
+<input type="text" id="virtualMemory" #virtualMemory>
+<label for="physicalMemory">Podaj ilość ramek</label>
+<input type="text" id="physicalMemory" #physicalMemory>
+<label for="stringReference">Podaj dlugość ciągu odwołań</label>
+<input type="text" id="stringReference" #stringReference>
+<button class="btn btn-default"
+        (click)="calculateError(virtualMemory.value, physicalMemory.value, stringReference.value)">Wyślij
+</button>
+<hr>
+<button (click)="getHelloData()">Get Hello</button>
+<button (click)="getAlgorithmData()">Get algorithm data</button>
+<div class="container">{{getHello}}</div>
+<div class="container">{{algorithmData}}</div>
