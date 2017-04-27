@@ -1,14 +1,48 @@
-<label for="virtualMemory">Podaj ilość stron</label>
-<input type="text" id="virtualMemory" #virtualMemory>
-<label for="physicalMemory">Podaj ilość ramek</label>
-<input type="text" id="physicalMemory" #physicalMemory>
-<label for="stringReference">Podaj dlugość ciągu odwołań</label>
-<input type="text" id="stringReference" #stringReference>
-<button class="btn btn-default"
-        (click)="calculateError(virtualMemory.value, physicalMemory.value, stringReference.value)">Wyślij
-</button>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-sm-4 jumbotron">
+        <div class="col-sm-6 ">
+          <label for="virtualMemory" class="text-capitalize ">Ilość stron</label>
+        </div>
+        <div class="col-sm-6">
+          <input type="number" id="virtualMemory" #virtualMemory>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="col-sm-6">
+          <label for="physicalMemory">Ilość ramek</label>
+        </div>
+        <div class="col-sm-6">
+          <input type="number" id="physicalMemory" #physicalMemory>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="col-sm-6">
+          <label for="stringReference"> ciągu odwołań</label>
+        </div>
+        <div class="col-sm-6">
+          <input type="number" id="stringReference" #stringReference>
+        </div>
+      </div>
+    </div>
+    <div class="row padding">
+      <input type="submit" class="btn btn-primary center-block" value="Wyślij"
+             (click)="getAlgorithmData(virtualMemory.value, physicalMemory.value, stringReference.value)"/>
+    </div>
+  </form>
+</div>
 <hr>
-<button (click)="getHelloData()">Get Hello</button>
-<button (click)="getAlgorithmData()">Get algorithm data</button>
-<div class="container">{{getHello}}</div>
+<div class="container" [hidden]="showAlgorithms">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2" ><button class="btn btn-info">Pokaż algorytm FIFO</button></div>
+    <div class="col-sm-2" ><button class="btn btn-info">Pokaż algorytm OPT</button></div>
+    <div class="col-sm-2" ><button class="btn btn-info">Pokaż algorytm LRU</button></div>
+    <div class="col-sm-2" ><button class="btn btn-info">Pokaż algorytm ALRU</button></div>
+    <div class="col-sm-2" ><button class="btn btn-info">Pokaż algorytm RAND</button></div>
+    <div class="col-sm-1"></div>
+  </div>
+  <hr>
+</div>
 <div class="container">{{algorithmData}}</div>

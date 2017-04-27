@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpService } from "../http.service";
-import {Response, URLSearchParams} from "@angular/http";
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'start-point',
@@ -12,8 +11,11 @@ export class StartPointComponent {
 
   getHello: any;
   algorithmData: any;
+  showAlgorithms: boolean;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {
+    this.showAlgorithms = true;
+  }
 
   getHelloData() {
     this.httpService.getHello().subscribe(
@@ -21,10 +23,11 @@ export class StartPointComponent {
     );
   }
 
-  getAlgorithmData() {
-    this.httpService.getAlgorithmData().subscribe(
-      (data: any) => this.algorithmData = data
+  getAlgorithmData(virtualMemory: string, physicalMemory: string, stringReference: string) {
+    this.httpService.getAlgorithmData(virtualMemory, physicalMemory, stringReference).subscribe(
+      (data: any) => this.algorithmData = JSON.stringify(data)
     );
+    this.showAlgorithms = false;
   }
 
 
